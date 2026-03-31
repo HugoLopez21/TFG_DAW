@@ -26,7 +26,7 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     state = models.ForeignKey(OrderState, on_delete=models.PROTECT)
-    state_change_data = models.DateTimeField(null=True, blank=True)
+    state_change_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 class OrderDetail(models.Model):
     order = models.ForeignKey(
