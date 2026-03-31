@@ -5,6 +5,7 @@ class Address(models.Model):
     street = models.CharField(max_length=50)
     number = models.IntegerField()
     floor_door = models.CharField(max_length=50)
+    city = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=5)
 
     class Meta:
@@ -33,5 +34,5 @@ class User(AbstractUser):
     )
 
     def __str__(self):
-        return self.name
+        return self.first_name
 
