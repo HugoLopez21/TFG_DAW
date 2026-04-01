@@ -51,7 +51,7 @@ class Product(models.Model):
     date_of_creation = models.DateTimeField(auto_now_add = True)
     date_of_update = models.DateTimeField(auto_now = True)
     on_sale = models.BooleanField(default=False)
-    category = models.ManyToManyField(
+    categories = models.ManyToManyField(
         Category, 
         related_name='products'
         )
