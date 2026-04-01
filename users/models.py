@@ -12,6 +12,7 @@ class Address(models.Model):
         verbose_name_plural = 'Addresses'
 
 class User(AbstractUser):
+    # Lista de roles de los usuarios
     ROLES = [
         ('customer', 'Customer'),
         ('admin', 'Admin'),
