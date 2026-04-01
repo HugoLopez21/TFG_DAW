@@ -8,8 +8,7 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         fields = ('email', 'password1', 'password2', 'first_name',
-                'last_name', 'date_of_birth', 'address', 'city',
-                'country', 'post_code')
+                'last_name', 'date_of_birth')
 
 
 class CustomUserChangeForm(UserChangeForm):
