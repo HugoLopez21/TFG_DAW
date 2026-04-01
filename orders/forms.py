@@ -10,4 +10,9 @@ class OrderCheckoutForm(forms.ModelForm):
 # Formulario para actualizar el estado del pedido por parte del personal
 class OrderStatusUpdateForm(forms.ModelForm):
     class Meta:
-        pass
+        model = Order
+        fields = ['status']
+        widgets = {
+            # Este widget permite elegir una de las opciones de estado
+            'status': forms.RadioSelect(),
+        } 
