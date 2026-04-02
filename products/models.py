@@ -8,7 +8,7 @@ class Category(models.Model):
     slug = models.SlugField(unique=True, max_length=200)
     description = models.CharField(max_length=250)
     image = models.ImageField(
-        upload_to='undefinied',
+        upload_to='categories/',
         null=True,
         blank=True
     )
@@ -31,11 +31,7 @@ class Category(models.Model):
 
 class Allergen(models.Model):
     name = models.CharField(max_length=50)
-    icon = models.ImageField(
-        upload_to='undefinied',
-        null=True,
-        blank=True
-    )
+    icon = models.CharField(max_length=200)
     def __str__(self):
         return self.name
 
@@ -43,7 +39,7 @@ class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=250)
     image = models.ImageField(
-        upload_to='undefinied',
+        upload_to='products/',
         null=True,
         blank=True
     )
