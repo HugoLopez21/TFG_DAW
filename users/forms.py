@@ -4,8 +4,12 @@ from django.urls import reverse
 from .models import Address
 from allauth.account.forms import LoginForm, SignupForm
 
+class CustomLoginForm(LoginForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomLoginForm, self).__init__(*args, **kwargs)
+
 class CustomSignupForm(SignupForm):
-    # Sobre escribe el formulario por defecto de registro de allauth
+    # Sobreescribe el formulario por defecto de registro de allauth
     first_name = forms.CharField(max_length=50)
     last_name = forms.CharField(max_length=100)
     date_of_birth = forms.DateField(label='Fecha nacimiento (MM-DD-YYYY)')
