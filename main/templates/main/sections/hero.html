@@ -1,0 +1,39 @@
+{% load static %}
+<section id="home" class="hero">
+    <div class="hero-content ">
+        <div class="hero-grid box-grid tems-center gap-600">
+            <div class="carousel-images box-flex">
+                <div class="slide-image" id="img-1">
+                    <img src="{% static 'media/foto1.jpg' %}" alt="">
+                </div>
+                <div class="slide-image" id="img-2">
+                    <img src="{% static 'media/3.jpg' %}" alt="">
+                </div>
+            </div>
+            <!-- SLIDES -->
+            <div class="carousel-text box-flex direction-column justify-center">
+                <!-- SLIDE 1-->
+                <div class="text-container active" id="info-1">
+                    <h2>POLLOS ASADOS AL CARBÓN</h2>
+                    <p>En Cómete el Mundo cocinamos como en casa, para que tú solo tengas que disfrutar. Cada
+                        día preparamos comida casera para llevar con ingredientes frescos, recetas
+                        tradicionales.</p>
+                    <button class="btn cta" data-type="primary">Acción</button>
+                </div>
+
+                <!-- SLIDE 2-->
+                <div class="text-container" id="info-2">
+                    <h2>NUESTRA ESPECIALIDAD</h2>
+                    <p>Somos especialistas en pollo asado al carbón, jugoso, sabroso y con ese aroma
+                        inconfundible que solo el fuego lento puede dar.</p>
+                    <button class="btn" data-type="primary">Pedir ahora</button>
+                </div>
+                <!-- INDICADORES SLIDE-->
+                <nav class="carousel-dots box-flex gap-300 gap-top-600">
+                    <button class="dot radius-full active" data-slide="1" aria-label="Slide 1"></button>
+                    <button class="dot dot radius-full" data-slide="2" aria-label="Slide 2"></button>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

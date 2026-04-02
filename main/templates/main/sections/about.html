@@ -1,0 +1,26 @@
+{% load static %}
+<section id="about" class="">
+    <div class="about-container container box-grid gap-700 items-center">
+        <div class="about-carousel" role="region" aria-label="Galería de imágenes">
+            <img src="{% static 'media/2.jpg' %}" alt="Foto en la cocina" />
+            <img src="{% static 'media/1.jpg' %}" alt="Cocinera" />
+            <img src="{% static 'media/fuera_local.jpg' %}" alt="Personas disfrutando del local" />
+        </div>
+
+        <div class="about-text">
+            <h2 id="about-title" class="section-title">Sobre Nosotros</h2>
+            <p class="lh14 gap-bottom-700 size1">
+                En Cómete el Mundo cocinamos a diario <bold>platos caseros</bold>, sin prisas ni procesos
+                industriales,
+                cuidando cada receta y cada ingrediente.
+                Nuestro <bold>asador de pollos al carbón</bold> es uno de los pilares del negocio, preparado de
+                forma
+                tradicional para lograr un sabor intenso y natural. Junto a él, elaboramos guisos, asados y
+                platos del día que recuerdan a la cocina de hogar.
+                Cocinamos para quienes valoran el sabor auténtico, la calidad y la tranquilidad de saber que
+                están comiendo bien.
+            </p>
+            <a href="#contact" class="btn btn-secondary">Saber más</a>
+        </div>
+    </div>
+</section>

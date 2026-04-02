@@ -1,0 +1,27 @@
+{% load static %}
+<header class="header pad-400 box-flex justify-center items-center bg-beige-dark">
+    <nav class="navbar container box-flex justify-between items-center">
+        <a href="#home" class="logo box-flex items-center gap-300">
+            <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo" class="brand-logo" />
+        </a>
+        <div class="nav-links box-flex justify-center gap-700">
+            <a href="#home">Inicio</a>
+            <a href="#products">Nuestra carta</a>
+            <a href="#about">Sobre nosotros</a>
+            <a href="#contact-location">Contacto</a>
+        </div>
+        <div class="header-actions box-flex justify-center gap-600">
+            <button class="btn btn-secondary">Login</button>
+            <button class="cart-button box-flex items-center justify-center" id="cart-button" aria-label="Abrir cesta">
+                <span class="cart-icon">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M7 8V7a5 5 0 0 1 10 0v1h2a1 1 0 0 1 .99 1.141l-1.5 10A2 2 0 0 1 16.51 21h-9a2 2 0 0 1-1.98-1.859l-1.5-10A1 1 0 0 1 5 8h2zm2 0h6V7a3 3 0 0 0-6 0v1z" />
+                    </svg>
+                </span>
+                <span class="cart-count box-flex items-center justify-center" id="cart-count">0</span>
+            </button>
+
+        </div>
+        </nav>
+</header>
