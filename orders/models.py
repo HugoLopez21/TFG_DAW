@@ -8,7 +8,7 @@ from django.db import models
 from django.core.validators import EmailValidator, MinLengthValidator
 
 #Importar modelos requeridos del proyecto
-from users.models import User, Address
+from users.models import CustomUser, Address
 from products.models import Product
 
 
@@ -26,7 +26,7 @@ class Order(models.Model):
         ('home', 'Home'),
         ('pickup','Pickup')
     ]
-    delivery_type = models.CharField(choices=DELIVERY_TYPE)
+    delivery_type = models.CharField(max_length=30, choices=DELIVERY_TYPE)
     
     
     total = models.DecimalField(max_digits=10, decimal_places=2)
@@ -35,7 +35,7 @@ class Order(models.Model):
     pay_status = models.BooleanField(default =False)
 
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     # Puede ser null porque el pedido puede ser para recoger
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
@@ -47,7 +47,7 @@ class Order(models.Model):
         ('entregado', 'Entregado'),
         ('cancelado', 'Cancelado'),
     ]
-    status = models.CharField(choices = STATUS_CHOICES, default='pendiente')
+    status = models.CharField(max_length=30, choices = STATUS_CHOICES, default='pendiente')
     status_change_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
 class OrderDetail(models.Model):
