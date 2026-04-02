@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
-    slug = models.SlugField(unique=True, max_length=200)
+    slug = models.SlugField(unique=True, max_length=200, blank=True)
     description = models.CharField(max_length=250)
     image = models.ImageField(
         upload_to='categories/',
@@ -18,9 +18,9 @@ class Category(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        self.full_clean()
         if not self.slug:
             self.slug = slugify(self.name)
+        self.full_clean()
         super().save(*args, **kwargs)
 
 
@@ -31,7 +31,11 @@ class Category(models.Model):
 
 class Allergen(models.Model):
     name = models.CharField(max_length=50)
-    icon = models.CharField(max_length=200)
+    image = models.ImageField(
+        upload_to='allergens/',
+        null=True,
+        blank=True
+    )
     def __str__(self):
         return self.name
 

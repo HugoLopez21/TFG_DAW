@@ -12,7 +12,6 @@ __pycache__/
 # ======================
 # DJANGO
 # ======================
-db.sqlite3
 media/
 staticfiles/
 
