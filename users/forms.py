@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django import forms
 from django.urls import reverse
+from .models import Address
 from allauth.account.forms import LoginForm, SignupForm
 
 class CustomSignupForm(SignupForm):
@@ -13,7 +14,6 @@ class CustomSignupForm(SignupForm):
     def save(self, request):
         # Guarda campos adicionales
         user = super(CustomSignupForm, self).save(request)
-        user.username = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.date_of_birth = self.cleaned_data['date_of_birth']
@@ -34,4 +34,10 @@ class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
 
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ('street', 'number', 'floor_door', 'city', 'post_code')
 
+    def __init__(self, *args, **kwargs):
+        super(AddressForm, self).__init__(*args, **kwargs)

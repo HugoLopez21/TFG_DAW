@@ -12,7 +12,11 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural = 'Addresses'
+        #Evitar dos direcciones iguales en la bd
+        unique_together = ('street', 'number', 'floor_door', 'city', 'post_code')
 
+    def __str__(self):
+        return f"{self.street} {self.number}, {self.city}"
 
 
 class CustomUserManager(BaseUserManager):
