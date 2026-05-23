@@ -4,6 +4,9 @@ from django import forms
 from django.urls import reverse
 
 
+# TODO:
+# Hacer que solo sean modificables los usuarios con rol empleados
+
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
@@ -15,5 +18,10 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = '__all__'
+
+
+# TODO:
+#   - Formulario de gestion del menú
+
 
 
