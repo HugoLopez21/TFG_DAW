@@ -8,15 +8,16 @@ from django.urls import reverse
 class EmployeeCreationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
-        fields = ('email', 'password1', 'first_name', 'last_name', 'role')
+        fields = ('email', 'first_name', 'last_name', 'role')
+        widgets = {'role': forms.RadioSelect(),}
 
 
 # Filtro aplicado al formulario para evitar que se puedan modificar usuarios no empleados
 class EmployeeChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
-        fields = '__all__'
-    
+        fields = ('email', 'first_name', 'last_name', 'role', 'is_active')
+        widgets = {'role': forms.RadioSelect(),}
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
     
