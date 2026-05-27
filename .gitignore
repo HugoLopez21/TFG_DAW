@@ -19,3 +19,10 @@ staticfiles/
 # VARIABLES DE ENTORNO
 # ======================
 .env
+
+# ======================
+# FRONTEND (REACT / VITE)
+# ======================
+node_modules/
+.vite/
+dist/
