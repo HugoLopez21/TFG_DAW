@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import user_passes_test
 from .models import Product, Allergen, Category
 from .forms import ProductForm, AllergenForm, CategoryForm
 from dashboard.views import is_manager 
-
+from django.db.models import ProtectedError
 
 #-------------- CRUD DE PRODUCTOS ------------
 
@@ -78,8 +78,11 @@ def modify_category(request, category_id):
 @user_passes_test(is_manager)
 def delete_category(request, category_id):
     category = get_object_or_404(Category, id = category_id)
-    category.delete()
-    messages.success(request, f"La categoría '{category.name}' ha sido eliminada.")
+    try:
+        category.delete()
+        messages.success(request, f"La categoría '{category.name}' ha sido eliminada.")
+    except ProtectedError:
+        messages.error(request, 'No puedes borrar esta categoría porque contiene productos asociados')
     return redirect() # URL
 
 
