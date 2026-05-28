@@ -11,8 +11,16 @@ from .serializers import OrderSerializer
 #Crear y listar pedidos
 @api_view(['GET', 'POST'])
 def order_list(request):
-    pass
+    if request.method == 'GET':
+        pass
+    elif request.method == 'POST':
+        pass
 
 @api_view(['GET','PUT', 'DELETE'])
 def order_detail(request):
-    pass
+    if request.method == 'GET':
+        pass
+    elif request.method == 'PUT':
+        pass
+    elif request.method == 'DELETE':
+        pass
