@@ -23,7 +23,7 @@ class OrderCheckoutForm(forms.Form):
     )
 
     address = forms.ModelChoiceField(
-        queryset=Address.objects.none(),  
+        queryset=Address.objects.none(), #Conecta con tabla address
         label="Dirección de entrega",
         required=False,  # False porque si eligen 'Pickup' no es necesario
         empty_label="-- Selecciona una dirección guardada --",
