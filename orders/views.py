@@ -35,18 +35,14 @@ def checkout_form(request):
                     
                     #Por cada producto del carrito se crea una linea de detalle
                     for item in form_checkout_cart:
-                        try:
-                            current_product = Product.objects.get(id=item['id'])
-                            OrderDetail.objects.create(
-                                order = current_order,
-                                product = current_product,
-                                quantity = item['quantity'],
-                                unit_price = current_product.price,
-                                notes = form_notes
-                            )
-                        except Product.DoesNotExist:
-                            messages.error(request, 'Error en el pago')
-                            return render() # Renderizar checkout
+                        current_product = Product.objects.get(id=item['id'])
+                        OrderDetail.objects.create(
+                            order = current_order,
+                            product = current_product,
+                            quantity = item['quantity'],
+                            unit_price = current_product.price,
+                            notes = form_notes
+                        )
                 return redirect() # Redireccion al  template trackin
                 
         except Exception as e:

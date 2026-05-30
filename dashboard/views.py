@@ -24,6 +24,9 @@ def is_manager(user):
 def is_employee(user):
     return user.role in ['delivery_man', 'employee']
 
+def is_worker(user):
+    return user.role in ['delivery_man', 'employee', 'manager']
+
 
 # ------------ RENDERS DE DASHBOARDS -------------------
 
