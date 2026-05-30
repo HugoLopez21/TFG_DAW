@@ -3,7 +3,8 @@ from .models import Order, OrderDetail
 from users.models import Address
 
 class AddressSerializer(serializers.ModelSerializer):
-    inline_address = serializers.SerializerMethodField()
+    #Añade get delante del nombre de la variable para obtener la funcion
+    inline_address = serializers.SerializerMethodField() 
 
     class Meta:
         model = Address

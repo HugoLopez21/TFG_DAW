@@ -11,6 +11,6 @@ def login_succes_redirect(request):
     if role == "customer":
         return redirect('home')
     elif role == "manager":
-        return redirect() # Vista con decorador de seguridad
+        return redirect('dashboard:manager_dashboard')
     elif role in ['delivery_man', 'employee']:
-        return redirect() # Vista con decorador de seguridad
+        return redirect('dashboard:orders_dashboard')
