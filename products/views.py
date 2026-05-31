@@ -123,3 +123,17 @@ def delete_allergen(request, allergen_id):
     allergen.delete()
     messages.success(request, f"El alérgeno '{allergen.name}' ha sido eliminado.")
     return redirect('dashboard:manager_dashboard')
+
+
+#--------- TOGGLE DISPONIBILIDAD DEL PRODUCTO ---------------
+
+@user_passes_test(is_manager)
+def toggle_product_availability(request, product_id):
+    """Alterna el estado de disponibilidad (activo/inactivo) de un producto"""
+    product = get_object_or_404(Product, id=product_id)
+    product.is_available = not product.is_available
+    product.save()
+    
+    estado = "activado" if product.is_available else "desactivado"
+    messages.success(request, f"Producto '{product.name}' ha sido {estado}.")
+    return redirect('dashboard:manager_dashboard')
