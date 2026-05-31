@@ -1,0 +1,37 @@
+<!-- SECCIÓN: ALÉRGENOS -->
+<section id="allergens-catalog" class="gap-bottom-900">
+    <div class="box-flex justify-between items-center gap-bottom-500">
+        <h2>Gestión de Alérgenos</h2>
+        <a href="{% url 'products:create_allergen' %}" class="btn btn-primary text-decoration-none">+ Crear Alérgeno</a>
+    </div>
+
+    <div class="bg-white border-radius-md box-shadow pad-400" style="overflow-x: auto;">
+        {% if allergens %}
+            <table class="width-full text-left align-middle">
+                <thead class="border-bottom">
+                    <tr>
+                        <th class="pad-300 text-left">Nombre</th>
+                        <th class="pad-300 text-left">Productos</th>
+                        <th class="pad-300 text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for allergen in allergens %}
+                        <tr class="border-bottom">
+                            <td class="pad-300 text-left weight-medium">{{ allergen.name }}</td>
+                            <td class="pad-300 text-left">{{ allergen.products.count }}</td>
+                            <td class="pad-300 text-left">
+                                <div class="box-flex gap-200">
+                                    <a href="{% url 'products:modify_allergen' allergen.id %}" class="btn btn-info py-1 px-2 text-200 text-decoration-none">Editar</a>
+                                    <a href="{% url 'products:delete_allergen' allergen.id %}" class="btn btn-danger py-1 px-2 text-200 text-decoration-none" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-center text-muted pad-600">No hay alérgenos. <a href="{% url 'products:create_allergen' %}">Crea uno ahora</a>.</p>
+        {% endif %}
+    </div>
+</section>

@@ -1,0 +1,10 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Crear categoria</button>
+</form>
+{% endblock content %}

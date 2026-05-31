@@ -1,0 +1,83 @@
+{% extends 'dashboard_base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-layout box-flex" style="min-height: calc(100vh - 5rem);">
+    {% include 'dashboard/includes/sidebar_menu.html' %}
+
+    <!-- Contenido Principal -->
+    <div class="dashboard-main container pad-700 width-full bg-beige-light" style="overflow-y: auto; max-height: calc(100vh - 5rem);">
+        
+        {% include 'dashboard/includes/menu_availability_section.html' %}
+        {% include 'dashboard/includes/products_section.html' %}
+        {% include 'dashboard/includes/categories_section.html' %}
+        {% include 'dashboard/includes/allergens_section.html' %}
+        {% include 'dashboard/includes/employees_section.html' %}
+        {% include 'dashboard/includes/recent_orders.html' %}
+        
+
+    </div>
+</div>
+
+<style>
+    .badge {
+        display: inline-block;
+        background-color: #f0f0f0;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        margin-right: 0.25rem;
+    }
+    
+    .btn {
+        cursor: pointer;
+        border: none;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+    }
+    
+    .btn-info {
+        background-color: #0066cc;
+        color: white;
+    }
+    
+    .btn-info:hover {
+        background-color: #0052a3;
+    }
+    
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    .btn-primary {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #218838;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    tbody tr:hover {
+        background-color: #f9f9f9;
+    }
+</style>
+{% endblock content %}

@@ -1,0 +1,39 @@
+<!-- SECCIÓN: CATEGORÍAS -->
+<section id="categories-catalog" class="gap-bottom-900">
+    <div class="box-flex justify-between items-center gap-bottom-500">
+        <h2>Gestión de Categorías</h2>
+        <a href="{% url 'products:create_category' %}" class="btn btn-primary text-decoration-none">+ Crear Categoría</a>
+    </div>
+
+    <div class="bg-white border-radius-md box-shadow pad-400" style="overflow-x: auto;">
+        {% if categories %}
+            <table class="width-full text-left align-middle">
+                <thead class="border-bottom">
+                    <tr>
+                        <th class="pad-300 text-left">Nombre</th>
+                        <th class="pad-300 text-left">Descripción</th>
+                        <th class="pad-300 text-left">Productos</th>
+                        <th class="pad-300 text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                        <tr class="border-bottom">
+                            <td class="pad-300 text-left weight-medium">{{ category.name }}</td>
+                            <td class="pad-300 text-left">{{ category.description|truncatewords:10 }}</td>
+                            <td class="pad-300 text-left">{{ category.products.count }}</td>
+                            <td class="pad-300 text-left">
+                                <div class="box-flex gap-200">
+                                    <a href="{% url 'products:modify_category' category.id %}" class="btn btn-info py-1 px-2 text-200 text-decoration-none">Editar</a>
+                                    <a href="{% url 'products:delete_category' category.id %}" class="btn btn-danger py-1 px-2 text-200 text-decoration-none" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-center text-muted pad-600">No hay categorías. <a href="{% url 'products:create_category' %}">Crea una ahora</a>.</p>
+        {% endif %}
+    </div>
+</section>

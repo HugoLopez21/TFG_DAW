@@ -3,9 +3,8 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import user_passes_test
 from .forms import EmployeeChangeForm, EmployeeCreationForm
-from products.models import Product
+from products.models import Product, Category, Allergen
 from orders.models import Order
-from products.models import Category
 
 
 
@@ -38,6 +37,7 @@ def manager_dashboard(request):
     available_products = Product.objects.filter(is_available=True)
     no_available_products = Product.objects.filter(is_available=False)
     categories = Category.objects.all()
+    allergens = Allergen.objects.all()
     recent_orders = Order.objects.all().order_by('-order_date')[:10]
     context = {
         'employees': employees,
@@ -45,6 +45,7 @@ def manager_dashboard(request):
         'available_products': available_products,
         'no_available_products': no_available_products,
         'categories': categories,
+        'allergens': allergens,
         'recent_orders': recent_orders,
     }
     return render(request, 'dashboard/manager.html', context)

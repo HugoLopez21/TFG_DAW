@@ -16,9 +16,13 @@
         {% endif %}
         
         <div class="header-actions box-flex justify-center gap-600">
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and user.role == 'customer'%}
                 <a class="btn btn-secondary" href="{{ user.get_absolute_url }}">{{ user.first_name }}</a>
-            {% else %}
+            {% elif user.is_authenticated and user.role == 'manager'%}
+                <a class="btn btn-secondary" href="{% url 'dashboard:manager_dashboard' %}">Ir a Dashboard</a>
+            {% elif user.is_authenticated and user.role == 'employee'%}
+                <a class="btn btn-secondary" href="{% url 'dashboard:employee_dashboard' %}">Ir a Pedidos</a>
+            {% elif not user.is_authenticated%}
                 <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
             {% endif %}
 
