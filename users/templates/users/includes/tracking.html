@@ -1,0 +1,11 @@
+{% extends 'users/profile.html' %} {% load static %}
+
+{% block panel_content %}
+<section class="tracking-section">
+    <h2>Seguimiento de tu Pedido</h2>
+    
+    <div id="django-tracking-island"></div>
+
+    <script type="module" src="{% static 'frontend/dist/tracking_island.js' %}"></script>
+</section>
+{% endblock panel_content %}

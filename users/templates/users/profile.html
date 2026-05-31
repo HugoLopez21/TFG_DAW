@@ -1,0 +1,12 @@
+{% extends 'profile_base.html' %} {% block content %}
+<div class="box-flex items-stretch" style="min-height: calc(100vh - 80px);">
+    
+    {% include 'users/includes/sidebar.html' %}
+
+    <main class="flex-1 bg-light pad-600">
+        {% block panel_content %}
+        {% endblock panel_content %}
+    </main>
+    
+</div>
+{% endblock content %}

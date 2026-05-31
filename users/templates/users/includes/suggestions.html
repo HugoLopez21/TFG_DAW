@@ -1,0 +1,10 @@
+{% extends 'users/profile.html' %} {% block panel_content %}
+<section class="suggestions-form">
+    <h2>Envíanos tus comentarios</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <textarea name="mensaje" rows="6" class="width-full"></textarea>
+        <button type="submit" class="btn btn-dark">Enviar</button>
+    </form>
+</section>
+{% endblock panel_content %}
