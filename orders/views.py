@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import OrderCheckoutForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Order, OrderDetail
 from products.models import Product
 from django.db import transaction
@@ -43,11 +44,11 @@ def checkout_form(request):
                             unit_price = current_product.price,
                             notes = form_notes
                         )
-                return redirect() # Redireccion al  template trackin
+                return redirect('orders:order_tracking', order_id=current_order.id)
                 
         except Exception as e:
-            messages.error(request, 'Error')
-            return render() # Form 
+            messages.error(request, 'Hubo un error al procesar tu pedido. Por favor, inténtalo de nuevo.')
+            return render(request, 'orders/checkout.html', {'form': form})
         
     elif request.method == 'GET':
         user = request.user
@@ -59,7 +60,13 @@ def checkout_form(request):
             }
         )
         form.fields['address'].queryset = user.addresses.all()
-        return render() #Renderiza el template del formulario con la informacion
+        return render(request, 'orders/checkout.html', {'form': form})
+
+@login_required
+def order_tracking(request, order_id):
+    # Verificamos que el pedido exista y pertenezca al usuario
+    get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'orders/tracking.html', {'order_id': order_id})
 
 def total_price(cart):
     try:

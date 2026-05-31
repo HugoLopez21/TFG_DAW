@@ -17,10 +17,10 @@ def create_product(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Producto creado con éxito.")
-            return redirect() # URL
+            return redirect('dashboard:manager_dashboard')
     else:
         form = ProductForm()
-    return render(request, 'url', {'form': form, 'Title': 'Crear producto'})
+    return render(request, 'products/product_form.html', {'form': form, 'title': 'Crear Producto'})
 
 @user_passes_test(is_manager)
 def modify_product(request, product_id):
@@ -30,10 +30,10 @@ def modify_product(request, product_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Producto modificado con éxito.")
-            return redirect('manager_dashboard')
+            return redirect('dashboard:manager_dashboard')
     else:
         form = ProductForm(instance = product)
-    return render(request, 'url', {'form': form, 'product': product, 'title': 'Editar Producto'})
+    return render(request, 'products/product_form.html', {'form': form, 'product': product, 'title': 'Editar Producto'})
 
 
 @user_passes_test(is_manager)
@@ -41,7 +41,7 @@ def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     messages.success(request, f"El producto '{product.name}' ha sido eliminado.")
-    return redirect('manager_dashboard')
+    return redirect('dashboard:manager_dashboard')
 
 
 
@@ -55,10 +55,10 @@ def create_category(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Categoría creada con éxito.")
-            return redirect('manager_dashboard')
+            return redirect('dashboard:manager_dashboard')
     else:
         form = CategoryForm()
-    return render(request, 'url', {'form': form, 'title': 'Crear Categoría'})
+    return render(request, 'products/category_form.html', {'form': form, 'title': 'Crear Categoría'})
 
 
 @user_passes_test(is_manager)
@@ -69,10 +69,10 @@ def modify_category(request, category_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Categoría modificada con éxito.")
-            return redirect('url')
+            return redirect('dashboard:manager_dashboard')
     else:
         form = CategoryForm(instance = category)
-    return render(request, 'url', {'form': form, 'category': category, 'title': 'Editar Categoría'})
+    return render(request, 'products/category_form.html', {'form': form, 'category': category, 'title': 'Editar Categoría'})
 
 
 @user_passes_test(is_manager)
@@ -83,7 +83,7 @@ def delete_category(request, category_id):
         messages.success(request, f"La categoría '{category.name}' ha sido eliminada.")
     except ProtectedError:
         messages.error(request, 'No puedes borrar esta categoría porque contiene productos asociados')
-    return redirect() # URL
+    return redirect('dashboard:manager_dashboard')
 
 
 
@@ -97,10 +97,10 @@ def create_allergen(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Alérgeno creado con éxito.")
-            return redirect('manager_dashboard')
+            return redirect('dashboard:manager_dashboard')
     else:
         form = AllergenForm()
-    return render(request, 'url', {'form': form, 'title': 'Crear Alérgeno'})
+    return render(request, 'products/allergen_form.html', {'form': form, 'title': 'Crear Alérgeno'})
 
 
 @user_passes_test(is_manager)
@@ -111,10 +111,10 @@ def modify_allergen(request, allergen_id):
         if form.is_valid():
             form.save()
             messages.success(request, "Alérgeno modificado con éxito.")
-            return redirect('url')
+            return redirect('dashboard:manager_dashboard')
     else:
         form = AllergenForm(instance=allergen)
-    return render(request, 'url', {'form': form, 'allergen': allergen, 'title': 'Editar Alérgeno'})
+    return render(request, 'products/allergen_form.html', {'form': form, 'allergen': allergen, 'title': 'Editar Alérgeno'})
 
 
 @user_passes_test(is_manager)
@@ -122,4 +122,4 @@ def delete_allergen(request, allergen_id):
     allergen = get_object_or_404(Allergen, id= allergen_id)
     allergen.delete()
     messages.success(request, f"El alérgeno '{allergen.name}' ha sido eliminado.")
-    return redirect('url')
+    return redirect('dashboard:manager_dashboard')
