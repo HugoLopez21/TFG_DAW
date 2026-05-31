@@ -6,8 +6,9 @@ from .models import Order
 from .serializers import OrderSerializer
 
 
-@permission_classes([IsAuthenticated])
+
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def order_list(request):
     user = request.user
     if request.method == 'GET':
@@ -27,8 +28,9 @@ def order_list(request):
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
-@permission_classes([IsAuthenticated])
+
 @api_view(['GET','PUT'])
+@permission_classes([IsAuthenticated])
 def order_detail(request, pk):
     try:
         order = Order.objects.get(pk=pk)

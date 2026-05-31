@@ -22,7 +22,7 @@ def is_worker(user):
 
 # RENDERIZA TEMPLATE DE LOS EMPLEADOS
 @user_passes_test(is_employee)
-def orders_dahsboard(request):
+def orders_dashboard(request):
     return render(request, 'url') 
 
 

@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-se&-5hlp(38cu2uk_nok=t45!(uo-+y4!yhqw^4x#0*4_bh9^)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#Evitar error token
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
 
 
 # Application definition
@@ -184,3 +186,6 @@ ACCOUNT_FORMS = {
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+#Autenticacion deshabilitada
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

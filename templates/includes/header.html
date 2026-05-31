@@ -5,7 +5,8 @@
             <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo" class="brand-logo" />
         </a>
 
-        {% if not user.role == 'customer' %}
+        {# Mostramos el menú a visitantes y clientes, lo ocultamos para empleados si prefieres que vayan directo al dashboard #}
+        {% if not user.is_authenticated or user.role == 'customer' %}
         <div class="nav-links box-flex justify-center gap-700">
             <a href="#home">Inicio</a>
             <a href="#products">Nuestra carta</a>
@@ -21,7 +22,8 @@
                 <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
             {% endif %}
 
-            {% if user.role == 'customer' %}
+            {# El carrito solo lo ven visitantes o clientes logueados #}
+            {% if not user.is_authenticated or user.role == 'customer' %}
             <button class="cart-button box-flex items-center justify-center" id="cart-button" aria-label="Abrir cesta">
                 <span class="cart-icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">

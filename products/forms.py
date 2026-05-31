@@ -33,10 +33,10 @@ class ProductForm(forms.ModelForm):
 class AllergenForm(forms.ModelForm):
     class Meta:
         model = Allergen
-        fields = ['name', 'icon']
+        fields = ['name', 'image']
         labels = {
             'name' : 'Nombre',
-            'icon' : 'Icono'
+            'image' : 'Imagen'
         }
 
 class CategoryForm(forms.ModelForm):

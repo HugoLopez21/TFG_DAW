@@ -91,4 +91,4 @@ class CustomUser(AbstractUser):
 
     #Obtener url perfil del usuario
     def get_absolute_url(self):
-        return reverse('user_profile')
+        return reverse('users:user_profile')
