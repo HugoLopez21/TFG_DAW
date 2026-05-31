@@ -25,7 +25,4 @@ def orders_history(request):
 
 @login_required
 def suggestions_view(request):
-    if request.method == 'POST':
-        # Procesar el formulario normal de Django...
-        pass
-    return render(request, 'users/suggestions.html')
+    return render(request, 'users/includes/suggestions.html')

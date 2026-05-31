@@ -1,7 +1,7 @@
 {% load static %}
 <header class="header pad-400 box-flex justify-center items-center bg-beige-dark">
     <nav class="navbar container box-flex justify-between items-center">
-        <a href="#home" class="logo box-flex items-center gap-300">
+        <a href="{% url 'main:home' %}" class="logo box-flex items-center gap-300">
             <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo" class="brand-logo" />
         </a>
 
