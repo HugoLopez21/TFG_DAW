@@ -28,8 +28,12 @@
                             <td class="pad-300 text-left">{{ employee.phone_number }}</td>
                             <td class="pad-300 text-left">
                                 <div class="box-flex gap-200">
-                                    <a href="{% url 'dashboard:modify_employee' employee.id %}" class="btn btn-info py-1 px-2 text-200 text-decoration-none">Editar</a>
-                                    <a href="{% url 'dashboard:delete_employee' employee.id %}" class="btn btn-danger py-1 px-2 text-200 text-decoration-none" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?')">Eliminar</a>
+                                    <a href="{% url 'dashboard:modify_employee' employee.id %}" class="btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="{% url 'dashboard:delete_employee' employee.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este empleado?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

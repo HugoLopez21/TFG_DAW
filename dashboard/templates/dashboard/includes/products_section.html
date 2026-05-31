@@ -23,7 +23,7 @@
 
     <div class="bg-white border-radius-md box-shadow pad-400" style="overflow-x: auto;">
         {% if all_products %}
-            <table class="width-full text-left">
+            <table class="width-full text-left align-middle">
                 <thead class="border-bottom">
                     <tr>
                         <th class="pad-300 text-left">Producto</th>
@@ -60,8 +60,12 @@
                             </td>
                             <td class="pad-300 text-left">
                                 <div class="box-flex gap-200">
-                                    <a href="{% url 'products:modify_product' product.id %}" class="btn btn-info py-1 px-2 text-200 text-decoration-none">Editar</a>
-                                    <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger py-1 px-2 text-200 text-decoration-none" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">Eliminar</a>
+                                    <a href="{% url 'products:modify_product' product.id %}" class="btn">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar este producto?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

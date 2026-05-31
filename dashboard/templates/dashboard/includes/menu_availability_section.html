@@ -37,7 +37,7 @@
                                 {% endif %}
                             </td>
                             <td class="pad-300 text-left">
-                                <a href="{% url 'products:toggle_availability' product.id %}" class="btn btn-secondary py-1 px-2 text-200 text-decoration-none">
+                                <a href="{% url 'products:toggle_availability' product.id %}" class="btn btn-secondary">
                                     {% if product.is_available %}Desactivar{% else %}Activar{% endif %}
                                 </a>
                             </td>

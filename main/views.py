@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
+from products.models import Product
 
 def home(request):
-    return render(request, 'main/home.html')
+    menu = {
+        'products': Product.objects.filter(is_available=True)
+    }
+    return render(request, 'main/home.html', menu)
 
 @login_required
 def login_succes_redirect(request):

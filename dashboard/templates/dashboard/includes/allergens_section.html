@@ -22,8 +22,12 @@
                             <td class="pad-300 text-left">{{ allergen.products.count }}</td>
                             <td class="pad-300 text-left">
                                 <div class="box-flex gap-200">
-                                    <a href="{% url 'products:modify_allergen' allergen.id %}" class="btn btn-info py-1 px-2 text-200 text-decoration-none">Editar</a>
-                                    <a href="{% url 'products:delete_allergen' allergen.id %}" class="btn btn-danger py-1 px-2 text-200 text-decoration-none" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                                    <a href="{% url 'products:modify_allergen' allergen.id %}" class="btn btn-info">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                    <a href="{% url 'products:delete_allergen' allergen.id %}" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
