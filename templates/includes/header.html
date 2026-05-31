@@ -4,14 +4,24 @@
         <a href="#home" class="logo box-flex items-center gap-300">
             <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo" class="brand-logo" />
         </a>
+
+        {% if not user.role == 'customer' %}
         <div class="nav-links box-flex justify-center gap-700">
             <a href="#home">Inicio</a>
             <a href="#products">Nuestra carta</a>
             <a href="#about">Sobre nosotros</a>
             <a href="#contact-location">Contacto</a>
         </div>
+        {% endif %}
+        
         <div class="header-actions box-flex justify-center gap-600">
-            <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
+            {% if user.is_authenticated %}
+                <a class="btn btn-secondary" href="{{ user.get_absolute_url }}">{{ user.first_name }}</a>
+            {% else %}
+                <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
+            {% endif %}
+
+            {% if user.role == 'customer' %}
             <button class="cart-button box-flex items-center justify-center" id="cart-button" aria-label="Abrir cesta">
                 <span class="cart-icon">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -21,6 +31,7 @@
                 </span>
                 <span class="cart-count box-flex items-center justify-center" id="cart-count">0</span>
             </button>
+            {% endif %}
 
         </div>
         </nav>
