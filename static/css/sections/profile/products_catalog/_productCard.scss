@@ -1,0 +1,164 @@
+.product-card-item {
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+    display: flex;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    // Zona de la imagen
+    .product-image-container {
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex-shrink: 0;
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .img-placeholder {
+            font-size: 1.8rem;
+            color: #c0c0c0;
+        }
+    }
+
+    // Contenedor de la información del producto
+    .product-info-container {
+        padding: 1rem 1.1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+
+        .product-badge {
+            font-size: 0.65rem;
+            color: #999999;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .product-name {
+            margin: 0.2rem 0 0 0;
+            color: #2c2c2c;
+            font-size: 0.95rem;
+            font-weight: 600;
+            line-height: 1.35;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.75rem;
+        }
+
+        .product-price {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #111111;
+        }
+    }
+
+    // Botón circular '+' para agregar al carrito
+    .btn-add-circle {
+        width: 32px;
+        height: 32px;
+        background-color: $color-secondary;
+        border: none;
+        border-radius: 50%;
+        color: #ffffff;
+        font-size: 1.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+
+        &:hover {
+            background-color: darken($color-secondary, 10%);
+            transform: scale(1.08);
+        }
+
+        &:active {
+            transform: scale(0.93);
+        }
+
+        .plus-icon {
+            line-height: 1;
+            margin-top: -2px;
+        }
+    }
+}
+
+//----------VARIANTES SEGUN EL TIPO DE TARJETA--------------
+
+// 1. Tarjeta Horizontal de OFERTAS
+.sales-card {
+    flex-direction: row;
+    height: 160px;
+    width: 100%;
+
+    .product-image-container {
+        width: 38%;
+        height: 100%;
+    }
+
+    .product-info-container {
+        width: 62%;
+        padding: 1.25rem;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+}
+
+// 2. Tarjeta Mini de DESTACADOS
+.prominents-card {
+    flex-direction: column;
+    width: 155px;
+    flex-shrink: 0; // imprescindible para que no se aplaste en el flex carousel
+
+    .product-image-container {
+        width: 100%;
+        height: 110px;
+    }
+
+    .product-info-container {
+        padding: 0.75rem;
+    }
+
+    .product-name {
+        font-size: 0.85rem;
+    }
+
+    .product-price {
+        font-size: 0.95rem;
+    }
+}
+
+// 3. Tarjeta Estándar
+.standard-card {
+    flex-direction: column;
+    width: 100%;
+
+    .product-image-container {
+        width: 100%;
+        height: 145px;
+    }
+}
