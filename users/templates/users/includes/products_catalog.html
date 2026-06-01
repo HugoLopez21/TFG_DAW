@@ -1,3 +1,10 @@
-{% extends 'users/profile.html' %} {% block panel_content %}
-    <h2>Carta React</h2>
+{% extends 'users/profile.html' %} 
+{% load static %}
+
+{% block panel_content %}
+<section></section>
+    <h2>Catalago de productos</h2>
+    <div id="django-catalog-island"></div>
+    <script type="module" src="{% static 'react/dist/tracker.js' %}"></script>
+</section>
 {% endblock panel_content %}
