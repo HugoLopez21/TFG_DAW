@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from orders.models import Order
 
 # Create your views here.
 @login_required
@@ -13,7 +14,17 @@ def profile_view(request):
 
 @login_required
 def tracking_view(request):
-    return render(request, 'users/includes/tracking.html')
+    active_order = Order.objects.filter(user=request.user).exclude(status='entregado').first()
+    if active_order:
+        context = {
+            'orderId': active_order.id
+        }
+    else:
+        context = {
+            'orderId': None
+        }
+    return render(request, 'users/includes/tracking.html', context)
+
 
 @login_required
 def products_catalog_view(request):

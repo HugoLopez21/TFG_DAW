@@ -4,8 +4,11 @@
 <section class="tracking-section">
     <h2>Seguimiento de tu Pedido</h2>
     
-    <div id="django-tracking-island"></div>
-
-    <script type="module" src="{% static 'frontend/dist/tracking_island.js' %}"></script>
+    {% if orderId %}
+        <div id="django-tracking-island" order-id="{{ orderId}}"></div>
+        <script type="module" src="{% static 'react/dist/tracker.js' %}"></script>
+    {% else %}
+        <p>No se ha encontrado ningun pedido activo.</p>
+    {% endif %}
 </section>
 {% endblock panel_content %}
