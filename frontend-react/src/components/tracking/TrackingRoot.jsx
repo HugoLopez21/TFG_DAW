@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import TrackingTimeline from './TrackingTimeline';
-import OrderSummary from './OrderSummary';
 
-export function TrackingRoot({orderId}){
+
+export default function TrackingRoot({orderId}){
     const [orderStatus, setOrderStatus] = useState('preparando');
     const [orderData, setOrderData] = useState(null);
     const [error, setError] = useState(false)
@@ -34,8 +33,9 @@ export function TrackingRoot({orderId}){
 
     return (
         <div class="box-flex flex-column gap-500">
+            {/*
             <TrackingTimeline currentStatus={orderStatus} />
-            <OrderSummary order={orderData} />
+            <OrderSummary order={orderData} />*/}
         </div>
     );
 }

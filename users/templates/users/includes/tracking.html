@@ -6,7 +6,7 @@
     
     {% if orderId %}
         <div id="django-tracking-island" order-id="{{ orderId}}"></div>
-        <script type="module" src="{% static 'react/dist/tracker.js' %}"></script>
+        <script type="module" src="{% static 'react/tracker.js' %}"></script>
     {% else %}
         <p>No se ha encontrado ningun pedido activo.</p>
     {% endif %}

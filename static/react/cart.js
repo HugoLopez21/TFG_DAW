@@ -1,0 +1,1 @@
+import{i as e,n as t,r as n,t as r}from"./jsx-runtime.js";var i=e(t(),1);n();var a=r();function o(){return(0,a.jsx)(`h2`,{children:`Shopping cart`})}var s=document.getElementById(`django-cart-island`);s&&i.createRoot(s).render((0,a.jsx)(o,{}));

@@ -14,6 +14,7 @@ export default defineConfig({
         // Crear punto de entrada para cada componente asíncrono
         cart: path.resolve(__dirname, 'src/react-modules/cart.jsx'),
         tracker: path.resolve(__dirname, 'src/react-modules/tracker.jsx'),
+        catalog: path.resolve(__dirname, 'src/react-modules/catalog.jsx'),
       },
       output: {
         // Forzamos nombres sin hashes aleatorios

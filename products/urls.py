@@ -21,5 +21,5 @@ urlpatterns = [
     path('alergeno/eliminar/<int:allergen_id>/', views.delete_allergen, name='delete_allergen'),
 
     # API ENDPOINT
-    path('/products/', products_list, name='products_list')
+    path('', products_list, name='products_list')
 ]
