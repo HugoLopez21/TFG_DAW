@@ -1,4 +1,5 @@
 from django.urls import path
+from .api import products_list
 from . import views
 
 app_name = 'products'
@@ -18,4 +19,7 @@ urlpatterns = [
     path('alergeno/crear/', views.create_allergen, name='create_allergen'),
     path('alergeno/editar/<int:allergen_id>/', views.modify_allergen, name='modify_allergen'),
     path('alergeno/eliminar/<int:allergen_id>/', views.delete_allergen, name='delete_allergen'),
+
+    # API ENDPOINT
+    path('/products/', products_list, name='products_list')
 ]
