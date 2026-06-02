@@ -1,0 +1,10 @@
+{% extends 'profile_base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">PAGAR</button>
+</form>
+{% endblock content %}
