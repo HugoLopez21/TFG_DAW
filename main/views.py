@@ -4,7 +4,7 @@ from products.models import Product
 
 def home(request):
     menu = {
-        'products': Product.objects.filter(is_available=True)
+        'products': Product.objects.filter(is_available=True, prominent=True)
     }
     return render(request, 'main/home.html', menu)
 
