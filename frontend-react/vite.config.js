@@ -12,9 +12,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         // Crear punto de entrada para cada componente asíncrono
-        cart: path.resolve(__dirname, 'src/react-modules/cart.jsx'),
         tracker: path.resolve(__dirname, 'src/react-modules/tracker.jsx'),
-        catalog: path.resolve(__dirname, 'src/react-modules/catalog.jsx'),
         catalog: path.resolve(__dirname, 'src/react-modules/catalog.jsx'),
         orders: path.resolve(__dirname, 'src/react-modules/ordersDashboard.jsx'),
       },

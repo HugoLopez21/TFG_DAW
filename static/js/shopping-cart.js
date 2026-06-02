@@ -45,14 +45,19 @@ function renderCart() {
   let total = 0;
 
   cart.forEach(item => {
-    total += getNumber(item.price);
+    const quantity = item.quantity || 1;
+    const itemPrice = getNumber(item.price) * quantity;
+    total += itemPrice;
 
     if (checkoutItems) {
       checkoutItems.innerHTML += `
         <div class="checkout-item">
           <img src="${item.image}">
-          <div>${item.name}</div>
-          <strong>${item.price}</strong>
+          <div>
+            <div>${item.name}</div>
+            <small>${quantity}x ${item.price}</small>
+          </div>
+          <strong>${itemPrice.toFixed(2)}€</strong>
         </div>
       `;
     }
@@ -61,10 +66,10 @@ function renderCart() {
   //ACTUALIZA EL CONTADOR DEL PANEL
   const checkoutCountEl = document.getElementById("checkout-count");
   if (checkoutCountEl) {
-    let palabra = (cart.length === 1) ? "artículo" : "artículos";
-    checkoutCountEl.textContent = cart.length + " " + palabra;
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    let palabra = (totalItems === 1) ? "artículo" : "artículos";
+    checkoutCountEl.textContent = totalItems + " " + palabra;
   }
-
 
   //ACTUALIZA EL TOTAL
   if (checkoutTotal) {
@@ -75,7 +80,10 @@ function renderCart() {
 
 // Actualizar el numerito del carrito
 function updateCartCount() {
-  if (cartCount) cartCount.textContent = cart.length;
+  if (cartCount) {
+    const quantity = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    cartCount.textContent = quantity;
+  }
 }
 
 
@@ -84,14 +92,22 @@ function addToCart(productCard) {
   const nameEl = productCard.querySelector(".product-name");
   const priceEl = productCard.querySelector("h4");
   const imgEl = productCard.querySelector("img");
+  const idEl = productCard.getAttribute("data-product-id");
 
   if (!nameEl || !priceEl) return;
 
+  const id = idEl || nameEl.textContent; // Usar data-product-id si existe, sino nombre
   const name = nameEl.textContent;
   const price = priceEl.textContent;
   const image = imgEl ? imgEl.src : "";
 
-  cart.push({ name, price, image });
+  // Buscar si el producto ya existe
+  const existingItem = cart.find(item => item.id === id);
+  if (existingItem) {
+    existingItem.quantity = (existingItem.quantity || 1) + 1;
+  } else {
+    cart.push({ id, name, price, image, quantity: 1 });
+  }
 
   updateCartCount();
   renderCart();
@@ -116,7 +132,8 @@ botones.forEach(function (boton) {
 /*CHECKOUT PANEL*/
 if (checkoutOpen) {
   checkoutOpen.addEventListener("click", () => {
-    if (cart.length === 0) return showToast("El carrito está vacío");
+    const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    if (totalItems === 0) return showToast("El carrito está vacío");
 
     checkoutPanel.classList.add("open");
     checkoutOverlay.classList.add("show");
@@ -135,11 +152,12 @@ function closePanel() {
 if (checkoutPay) {
   checkoutPay.addEventListener("click", () => {
     if (cart.length === 0) return;
-    cart = [];
-    updateCartCount();
-    renderCart();
-    closePanel();
-    showToast("Pago realizado con éxito");
+    
+    // Guardar carrito en localStorage
+    localStorage.setItem('cart_data', JSON.stringify(cart));
+    
+    // Redirigir a checkout
+    window.location.href = '/orders/checkout/';
   });
 }
 

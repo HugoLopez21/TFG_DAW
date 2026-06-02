@@ -38,7 +38,7 @@ export const ProductCard = ({ product, variant = "standard" }) => {
                     {/* Mostrar botón '+' N se muestra en las ofertas grandes */}
                     {variant !== 'sales' && (
                         <button 
-                            className="btn-add-circle border-radius-full box-flex items-center justify-center cursor-pointer"
+                            className="btn-add-circle add-to-cart border-radius-full box-flex items-center justify-center cursor-pointer"
                             onClick={handleAddClick}
                             aria-label={`Añadir ${product.name} al carrito`}
                         >
