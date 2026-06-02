@@ -12,7 +12,8 @@ export default function CatalogRoot() {
             const response = await fetch('/products/');
             if (!response.ok) throw new Error('Error en fetch api');
             const data = await response.json();
-            setProducts(data);
+            const activeProducts = data.filter(p => p.is_available === true);
+            setProducts(activeProducts);
         } catch (error) {
             console.error(error);
             setError(true);
