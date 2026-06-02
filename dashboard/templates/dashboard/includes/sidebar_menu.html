@@ -1,24 +1,33 @@
+{% url 'dashboard:manager_dashboard' as manager_dashboard_url %}
+{% url 'dashboard:orders_dashboard' as orders_url %}
+
 <!-- Sidebar de Navegación -->
-<aside class="sidebar bg-white border-right pad-600" style="width: 280px; min-width: 280px; flex-shrink: 0; border-right: 1px solid #e0e0e0;">
-    <h3 class="gap-bottom-600">Panel de Manager</h3>
+<aside class="sidebar bg-white pad-600 box-flex direction-column items-stretch width-quarter">
+    <h3 class="gap-bottom-600 color-dark">Panel de Manager</h3>
     
     <!-- MENÚ PRINCIPAL -->
     <nav class="sidebar-nav gap-bottom-800">
-        <h4 class="text-300 color-muted weight-bold gap-bottom-400">GESTIÓN</h4>
+        <h4 class="sidebar-nav-title">GESTIÓN</h4>
         <ul class="list-none pad-0">
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#menu-management" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Disponibilidad de Menú
+                <a href="{{ manager_dashboard_url }}#menu-management" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-utensils sidebar-icon"></i>
+                    <span>Disponibilidad de Menú</span>
                 </a>
             </li>
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#recent-orders" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Pedidos Recientes
+                <a href="{{ manager_dashboard_url }}#recent-orders" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-clock-rotate-left sidebar-icon"></i>
+                    <span>Pedidos Recientes</span>
                 </a>
             </li>
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:orders_dashboard' %}" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Ver Todos los Pedidos
+                <a href="{{ orders_url }}" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300 {% if request.path == orders_url %}active{% endif %}">
+                    <i class="fa-solid fa-list-check sidebar-icon"></i>
+                    <span>Ver Todos los Pedidos</span>
                 </a>
             </li>
         </ul>
@@ -26,21 +35,27 @@
 
     <!-- CATÁLOGO -->
     <nav class="sidebar-nav gap-bottom-800">
-        <h4 class="text-300 color-muted weight-bold gap-bottom-400">CATÁLOGO</h4>
+        <h4 class="sidebar-nav-title">CATÁLOGO</h4>
         <ul class="list-none pad-0">
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#products-catalog" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Productos
+                <a href="{{ manager_dashboard_url }}#products-catalog" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-cubes sidebar-icon"></i>
+                    <span>Productos</span>
                 </a>
             </li>
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#categories-catalog" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Categorías
+                <a href="{{ manager_dashboard_url }}#categories-catalog" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-tags sidebar-icon"></i>
+                    <span>Categorías</span>
                 </a>
             </li>
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#allergens-catalog" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Alérgenos
+                <a href="{{ manager_dashboard_url }}#allergens-catalog" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-triangle-exclamation sidebar-icon"></i>
+                    <span>Alérgenos</span>
                 </a>
             </li>
         </ul>
@@ -48,11 +63,13 @@
 
     <!-- PERSONAL -->
     <nav class="sidebar-nav">
-        <h4 class="text-300 color-muted weight-bold gap-bottom-400">PERSONAL</h4>
+        <h4 class="sidebar-nav-title">PERSONAL</h4>
         <ul class="list-none pad-0">
             <li class="gap-bottom-300">
-                <a href="{% url 'dashboard:manager_dashboard' %}#employees-catalog" class="color-dark weight-bold text-decoration-none box-flex items-center gap-300">
-                    Empleados
+                <a href="{{ manager_dashboard_url }}#employees-catalog" 
+                   class="sidebar-link color-dark text-decoration-none box-flex items-center gap-300">
+                    <i class="fa-solid fa-user-tie sidebar-icon"></i>
+                    <span>Empleados</span>
                 </a>
             </li>
         </ul>

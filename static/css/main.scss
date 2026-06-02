@@ -27,7 +27,7 @@
 @import 'sections/profile/products_catalog/_catalogRoot';
 @import 'sections/profile/products_catalog/_productGrid';
 @import 'sections/profile/products_catalog/_productCard';
-
+@import 'sections/dashboard/_dashboard';
 
 
 // ----- Ajustar para responsive -------
@@ -123,4 +123,24 @@ section {
         font-size: 1.8rem;
     }
 
+    .profile-layout {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .profile-sidebar {
+        width: 280px;
+        min-width: 280px;
+        min-height: calc(100vh - 80px);
+        border-bottom: none;
+        border-right: 1px solid $brand-border;
+    }
+
+    .dashboard-sidebar {
+        width: 260px;
+        min-width: 260px;
+        min-height: calc(100vh - 80px);
+        border-bottom: none;
+        border-right: 1px solid #e0e0e0;
+    }
 }
