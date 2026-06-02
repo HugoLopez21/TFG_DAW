@@ -38,7 +38,6 @@ def manager_dashboard(request):
     no_available_products = Product.objects.filter(is_available=False)
     categories = Category.objects.all()
     allergens = Allergen.objects.all()
-    recent_orders = Order.objects.all().order_by('-order_date')[:10]
     context = {
         'employees': employees,
         'all_products': all_products,
@@ -46,13 +45,17 @@ def manager_dashboard(request):
         'no_available_products': no_available_products,
         'categories': categories,
         'allergens': allergens,
-        'recent_orders': recent_orders,
     }
     return render(request, 'dashboard/manager.html', context)
 
 
 
 # ----------- VISTAS MANAGER -----------------
+@user_passes_test(is_manager)
+def order_list(request):
+    if request.method == 'GET':
+        orders = Order.objects.all()
+        return render(request, 'dashboard/orders.html', {'orders': orders})
 
 
 # CRUD EMPLEADOS
