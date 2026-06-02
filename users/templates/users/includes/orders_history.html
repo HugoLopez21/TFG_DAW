@@ -1,4 +1,9 @@
-{% extends 'users/profile.html' %} {% block panel_content %}
+{% extends 'users/profile.html' %}
+{% load static %}
+{% block panel_content %}
 <h2>Mis historial de pedidos</h2>
-
+<tbody id="api-orders-tbody" data-url="{% url 'orders:orders-list' %}">
+    <!-- Se cargará desde la API -->
+</tbody>
 {% endblock panel_content %}
+<script src="{% static 'js/fetch-orders.js' %}"></script>
