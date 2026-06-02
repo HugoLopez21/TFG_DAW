@@ -1,26 +1,7 @@
-<!-- Panel lateral de checkout -->
-<div class="checkout-overlay pos-fixed" id="checkout-overlay"></div>
-
-<aside class="checkout-panel pos-fixed box-flex direction-column" id="checkout-panel" aria-hidden="true">
-    <div class="checkout-panel-header box-flex justify-between items-center gap-bottom-300">
-        <h3 class="checkout-panel-title">Resumen de compra</h3>
-        <button class="checkout-close" id="checkout-close" aria-label="Cerrar panel">✕</button>
-    </div>
-
-    <div class="checkout-panel-body">
-        
-        <p id="checkout-count">0 artículos</p>
-        
-        <div id="checkout-items" class="checkout-items gap-top-400 box-flex direction-column gap-400"></div>
-
-        <div class="checkout-summary gap-top-300 pad-top-300">
-        <p id="checkout-total">Total: €0.00</p>
-        </div>
-    </div>
-
-    <div class="checkout-panel-footer gap-top-400 box-flex direction-column">
-        <button class="btn btn-primary" type="button" id="checkout-pay">
-        Pagar
-        </button>
-    </div>
-</aside>
+{% load static %}
+{% block panel_content %}
+<section class="tracking-section">
+    <h2>Seguimiento de tu Pedido</h2>
+    <script type="module" src="{% static 'react/checkout.js' %}"></script>
+</section>
+{% endblock panel_content %}

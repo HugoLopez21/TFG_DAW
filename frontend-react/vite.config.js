@@ -15,6 +15,8 @@ export default defineConfig({
         tracker: path.resolve(__dirname, 'src/react-modules/tracker.jsx'),
         catalog: path.resolve(__dirname, 'src/react-modules/catalog.jsx'),
         orders: path.resolve(__dirname, 'src/react-modules/ordersDashboard.jsx'),
+        checkout: path.resolve(__dirname, 'src/react-modules/checkout.jsx'),
+
       },
       output: {
         // Forzamos nombres sin hashes aleatorios

@@ -1,0 +1,1 @@
+import{i as e,n as t,r as n,t as r}from"./jsx-runtime.js";import{t as i}from"./CheckoutPanelRoot.js";n();var a=e(t(),1),o=r(),s=document.getElementById(`django-checkoutpanel-island`);s&&a.createRoot(s).render((0,o.jsx)(i,{}));

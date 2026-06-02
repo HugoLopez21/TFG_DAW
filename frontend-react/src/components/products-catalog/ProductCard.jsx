@@ -1,10 +1,11 @@
 import React from "react";
+import { useCart } from "../../context/CartContext";
 
 export const ProductCard = ({ product, variant = "standard" }) => {
-    
+    const { addToCart } = useCart()
     // Función carrito de compras
     const handleAddClick = () => {
-        console.log(`Producto añadido: ${product.name}`);
+        addToCart(product)
     };
 
     return (
