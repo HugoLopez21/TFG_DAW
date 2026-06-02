@@ -12,6 +12,6 @@ urlpatterns = [
     path('tracking/<int:order_id>/', views.order_tracking, name='order_tracking'),
     
     # Api endpoints
-    path('orders/', order_list, name='orders-list'),  # Endpoint GET
-    path('orders/<int:pk>/', order_detail, name='order-detail'),  # Endpoint GET, PUT
+    path('', order_list, name='orders-list'),  # Endpoint GET
+    path('<int:pk>/', order_detail, name='order-detail'),  # Endpoint GET, PUT
 ]

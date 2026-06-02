@@ -24,7 +24,7 @@ def is_worker(user):
 # RENDERIZA TEMPLATE DE LOS EMPLEADOS
 @user_passes_test(is_employee)
 def orders_dashboard(request):
-    return render(request, 'url') 
+    return render(request, 'dashboard/orders.html') 
 
 
 
@@ -51,11 +51,6 @@ def manager_dashboard(request):
 
 
 # ----------- VISTAS MANAGER -----------------
-@user_passes_test(is_manager)
-def order_list(request):
-    if request.method == 'GET':
-        orders = Order.objects.all()
-        return render(request, 'dashboard/orders.html', {'orders': orders})
 
 
 # CRUD EMPLEADOS
