@@ -2,11 +2,12 @@
 {% load static %}
 
 {% block content %}
-<div class="dashboard-layout box-flex" style="min-height: calc(100vh - 5rem);">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<div class="dashboard-layout box-flex">
     {% include 'dashboard/includes/sidebar_menu.html' %}
 
     <!-- Contenido Principal -->
-    <div class="dashboard-main container pad-700 width-full" style="overflow-y: auto; max-height: calc(100vh - 5rem);">
+    <div class="dashboard-main container pad-700 width-full">
 
         {% include 'dashboard/includes/menu_availability_section.html' %}
         {% include 'dashboard/includes/products_section.html' %}

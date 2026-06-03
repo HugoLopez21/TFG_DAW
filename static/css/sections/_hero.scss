@@ -10,7 +10,7 @@
 
     .slide-image {
         flex: 0 0 100%; 
-        transition: transform 0.8s ease-in-out;
+        transition: transform $transition-base ease-in-out;
 
 
         img {
@@ -29,12 +29,12 @@
 
     //Estilo texto
     h2 {
-        font-size: 3.5rem;
+        font-size: $font-size-hero-title;
         margin-bottom: 1rem;
     }
 
     p {
-        font-size: 1.1rem;
+        font-size: $font-size-base-plus;
         line-height: 1.6;
         color: $color-dark-text;
         margin-bottom: 2rem;
