@@ -5,7 +5,6 @@
             <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo" class="brand-logo" />
         </a>
 
-        {# Mostramos el menú a visitantes y clientes, lo ocultamos para empleados si prefieres que vayan directo al dashboard #}
         {% if not user.is_authenticated or user.role == 'customer' %}
         <div class="nav-links box-flex justify-center gap-700">
             <a href="#home">Inicio</a>
@@ -14,19 +13,27 @@
             <a href="#contact-location">Contacto</a>
         </div>
         {% endif %}
-        
+
         <div class="header-actions box-flex justify-center gap-600">
             {% if user.is_authenticated and user.role == 'customer'%}
-                <a class="btn btn-secondary" href="{{ user.get_absolute_url }}">{{ user.first_name }}</a>
+            <a class="btn btn-secondary" href="{{ user.get_absolute_url }}">{{ user.first_name }}</a>
             {% elif user.is_authenticated and user.role == 'manager'%}
-                <a class="btn btn-secondary" href="{% url 'dashboard:manager_dashboard' %}">Ir a Dashboard</a>
+            <a class="btn btn-secondary" href="{% url 'dashboard:manager_dashboard' %}">Ir a Dashboard</a>
             {% elif user.is_authenticated and user.role == 'employee'%}
-                <a class="btn btn-secondary" href="{% url 'dashboard:orders_dashboard' %}">Ir a Pedidos</a>
+            <a class="btn btn-secondary" href="{% url 'dashboard:orders_dashboard' %}">Ir a Pedidos</a>
             {% elif not user.is_authenticated%}
-                <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
+            <a class="btn btn-secondary" href="{% url 'account_login' %}">Login</a>
             {% endif %}
 
-            {# El carrito solo lo ven visitantes o clientes logueados #}
+            {% if user.is_authenticated%}
+            <form action="{% url 'account_logout' %}" method="post" onsubmit="localStorage.removeItem('shopping_cart');">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    Cerrar Sesión
+                </button>
+            </form>
+            {% endif %}
+
             {% if not user.is_authenticated or user.role == 'customer' %}
             <button class="cart-button box-flex items-center justify-center" id="cart-button" aria-label="Abrir cesta">
                 <span class="cart-icon">
@@ -40,5 +47,5 @@
             {% endif %}
 
         </div>
-        </nav>
+    </nav>
 </header>
