@@ -39,8 +39,11 @@ def modify_product(request, product_id):
 @user_passes_test(is_manager)
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    product.delete()
-    messages.success(request, f"El producto '{product.name}' ha sido eliminado.")
+    try:
+        product.delete()
+        messages.success(request, f"El producto '{product.name}' ha sido eliminado.")
+    except ProtectedError:
+        messages.error(request, f"No puedes eliminar '{product.name}' porque ya aparece en pedidos realizados. Te recomendamos desactivar su disponibilidad en su lugar.")
     return redirect('dashboard:manager_dashboard')
 
 

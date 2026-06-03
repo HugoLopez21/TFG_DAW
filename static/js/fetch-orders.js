@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         const orders = await response.json();
-
+        console.log(orders)
         if (orders.length === 0) {
-            console.log(orders)
+            
             tbody.innerHTML = '<tr><td class="pad-300 text-center text-muted">No hay pedidos recientes.</td></tr>';
             return;
         }
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         tbody.innerHTML = orders.map(order => `
             <tr class="border-bottom">
                 <td class="pad-300 text-left weight-medium">#${order.id}</td>
-                <td class="pad-300 text-left">${order.user.first_name} ${order.user.last_name}</td>
+                <td class="pad-300 text-left">${order.client_name}</td>
                 <td class="pad-300 text-left">${order.delivery_type_display || order.delivery_type}</td>
                 <td class="pad-300 text-left weight-bold">${order.total}€</td>
                 <td class="pad-300 text-left">
