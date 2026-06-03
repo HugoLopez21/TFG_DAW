@@ -11,10 +11,10 @@
 </head>
 <body>
     {% include 'includes/header.html' %}
-    {% include 'main/sections/checkout_panel.html' %}
     {% block content %}
     {% endblock content %}
 
     {% include 'includes/footer.html' %}
+    <script type="module" src="{% static 'react/checkout.js' %}"></script>
 </body>
 </html>
