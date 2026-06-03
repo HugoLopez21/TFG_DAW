@@ -7,4 +7,16 @@
     {{ form.as_p }}
     <button type="submit">PAGAR</button>
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cart = JSON.parse(localStorage.getItem('shopping_cart')) || [];
+        const cartInput = document.getElementById('id_cart_data');
+        console.log("Enviando al backend:", cart); // Esto te permite asegurar los datos en la consola
+        
+        if (cartInput) {
+            cartInput.value = JSON.stringify(cart);
+        }
+    });
+</script>
 {% endblock content %}

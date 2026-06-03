@@ -13,6 +13,7 @@ export const CartProvider = ({ children }) => {
     //Sincronizar el número del carrito 
     useEffect(() => {
         localStorage.setItem('shopping_cart', JSON.stringify(cart));
+        
         const cartCount = document.getElementById("cart-count");
         if (cartCount) {
             const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
@@ -68,9 +69,12 @@ export const CartProvider = ({ children }) => {
 
     // Redireccion paea pagar
     const handlePay = () => {
+        console.log('pagando')
+        console.log(cart)
         if (cart.length === 0) return;
         localStorage.setItem('shopping_cart', JSON.stringify(cart));
         window.location.href = '/orders/checkout/';
+        
     };
 
     return (
