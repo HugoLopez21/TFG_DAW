@@ -10,23 +10,23 @@ from .serializers import OrderSerializer
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def order_list(request):
+    print('accediendo a lista de pedidos')
     user = request.user
-    if request.method == 'GET':
-        if user.is_staff:
-            if user.role == 'delivery_man':
-                orders = Order.objects.filter(status__in=['en_preparacion', 'enviado'] )
+    if user.role == 'delivery_man':
+        orders = Order.objects.filter(status__in=['en_preparacion', 'enviado'] )
 
-            elif user.role == 'employee':
-                orders = Order.objects.filter(status__in=['en_preparacion', 'pendiente'])
+    elif user.role == 'employee':
+        orders = Order.objects.filter(status__in=['en_preparacion', 'pendiente'])
+    
+    elif user.role == 'manager':
+        orders = Order.objects.all()
             
-            elif user.role == 'manager':
-                orders = Order.objects.all()
-            
-        else:
-            orders = Order.objects.filter(user=user)
-        
-        serializer = OrderSerializer(orders, many=True)
-        return Response(serializer.data)
+    else:
+        orders = Order.objects.filter(user=user)
+    
+    serializer = OrderSerializer(orders, many=True)
+    print(serializer.data)
+    return Response(serializer.data)
 
 
 @api_view(['GET','PUT'])

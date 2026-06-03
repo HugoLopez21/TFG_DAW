@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const orders = await response.json();
 
         if (orders.length === 0) {
+            console.log(orders)
             tbody.innerHTML = '<tr><td class="pad-300 text-center text-muted">No hay pedidos recientes.</td></tr>';
             return;
         }
