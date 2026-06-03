@@ -3,17 +3,18 @@
 .about-container {
     grid-template-columns: 1.2fr 1fr; // 2 columnas, laolumna izquierda mas grande
     padding: 4rem 2rem; 
-    background: $color-white;
-    border-radius: $border-radius-xl; // 32px
+    background: white;
+    border-radius: 32px;
     box-shadow: $container-shadow;
     margin: 2rem auto; //Espacio del contenedor
 }
 
+
 .about-carousel {
   position: relative; //Posicionar las imagenes no visibles dentro
-  height: $section-image-height; // 400px - Variable compartida con prominent
+  height: 400px; //Altura fja
   overflow: hidden; // Lo que se sobrepone lo oculta
-  border-radius: $border-radius-lg; // 24px
+  border-radius: 24px;
 }
 
 //Imagenes del carrusel
@@ -26,7 +27,7 @@
   height: 100%;
   object-fit: cover; //Llena todo el espacio de la imagen sin estirarla
   opacity: 0; //No visible
-  transition: opacity $transition-slow ease;
+  transition: opacity 1.2s ease;
   transform: scale(1.05);
 }
 
