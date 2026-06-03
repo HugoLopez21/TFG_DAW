@@ -4,11 +4,15 @@ const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({children}) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem('shopping_cart');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
     const [isPanelOpen, setIsPanelOpen] = useState(false);
 
     //Sincronizar el número del carrito 
     useEffect(() => {
+        localStorage.setItem('shopping_cart', JSON.stringify(cart));
         const cartCount = document.getElementById("cart-count");
         if (cartCount) {
             const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
@@ -65,7 +69,7 @@ export const CartProvider = ({children}) => {
     // Redireccion paea pagar
     const handlePay = () => {
         if (cart.length === 0) return;
-        localStorage.setItem('cart_data', JSON.stringify(cart));
+        localStorage.setItem('shopping_cart', JSON.stringify(cart));
         window.location.href = '/orders/checkout/';
     };
 
