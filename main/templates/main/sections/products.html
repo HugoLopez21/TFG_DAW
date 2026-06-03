@@ -2,26 +2,9 @@
 <section id="products" class="bg-beige-dark">
     <div class="container box-flex direction-column pad-top-700">
         <h2 class="gap-bottom-700 gap-top-700">Nuestros productos destacados</h2>
-        <div class="products-grid box-grid bg-border">
-            <!--Tarjetas producto-->
-            {% for product in products %}
-            <div class="product-card box-flex direction-column items">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                {% else %}
-                    <img src="{% static 'media/logo.png' %}" alt="{{ product.name }}">
-                {% endif %}
-                <div class="card-text">
-                        <h3 class="product-name">{{ product.name }}</h3>
-                        <h4>{{ product.price }}€</h4>
-                        <p class="product-description">{{ product.description }}</p>
-                        <div class="product-foot box-flex justify-between gap-top-400 gap-300">
-                            <span>Saber más</span>
-                            <button class="add-to-cart gap-right-300 btn btn-primary" type="button">Añadir</button>
-                        </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+        {% block panel_content %}
+        <div id="django-catalog-island"></div>
+        <script type="module" src="{% static 'react/catalog.js' %}"></script>
+        {% endblock panel_content %}
     </div>
 </section>
