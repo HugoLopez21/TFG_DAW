@@ -3,7 +3,7 @@ const CartContext = createContext();
 
 export const useCart = () => useContext(CartContext);
 
-export const CartProvider = ({children}) => {
+export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(() => {
         const savedCart = localStorage.getItem('shopping_cart');
         return savedCart ? JSON.parse(savedCart) : [];
@@ -23,7 +23,7 @@ export const CartProvider = ({children}) => {
     // Abrir el panel al hacer click en el carrito
     useEffect(() => {
         const cartButton = document.getElementById("cart-button");
-        
+
         const handleOpenPanel = () => {
             const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
             if (totalItems === 0) {
@@ -56,7 +56,7 @@ export const CartProvider = ({children}) => {
             const existingItem = prevCart.find(item => item.id === product.id);
             if (existingItem) {
                 return prevCart.map(item =>
-                    item.id === product.id 
+                    item.id === product.id
                         ? { ...item, quantity: (item.quantity || 1) + 1 }
                         : item
                 );
