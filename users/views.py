@@ -57,7 +57,9 @@ def user_data(request):
     if request.method == 'GET':
         user = request.user
         context = {
-            'user' : CustomUser.objects.get(id=user.id)
+            'user' : CustomUser.objects.get(id=user.id),
+            'user_form' : ProfileForm(instance=user),
+            'address_form' : AddressForm(),
         }
         return render(request, 'users/includes/profile_data.html', context)
 

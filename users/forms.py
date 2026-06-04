@@ -10,10 +10,10 @@ class CustomLoginForm(LoginForm):
 
 class CustomSignupForm(SignupForm):
     # Sobreescribe el formulario por defecto de registro de allauth
-    first_name = forms.CharField(max_length=50)
-    last_name = forms.CharField(max_length=100)
+    first_name = forms.CharField(label='Nombre', max_length=50)
+    last_name = forms.CharField(label='Apellido/s', max_length=100)
     date_of_birth = forms.DateField(label='Fecha nacimiento (MM-DD-YYYY)')
-    phone_number = forms.CharField(max_length=15)
+    phone_number = forms.CharField( label='Número de teléfono', max_length=15)
 
     def save(self, request):
         # Guarda campos adicionales

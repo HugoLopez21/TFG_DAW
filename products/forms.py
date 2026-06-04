@@ -4,7 +4,6 @@ from .models import Product, Allergen, Category
 
 # Formularios para crear y editar productos, alérgenos y categorías
 
-# PARA DARLE ESTILOS USAREMOS LA LIBRERIA DJANGO-WIDGET-TWEAKS 
 # PARA SEPARAR FORNT DE BAKC
 class ProductForm(forms.ModelForm):
     class Meta:
