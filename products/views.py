@@ -39,11 +39,12 @@ def modify_product(request, product_id):
 @user_passes_test(is_manager)
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
+    product_name = product.name
     try:
         product.delete()
-        messages.success(request, f"El producto '{product.name}' ha sido eliminado.")
+        messages.success(request, f"El producto '{product_name}' ha sido eliminado.")
     except ProtectedError:
-        messages.error(request, f"No puedes eliminar '{product.name}' porque ya aparece en pedidos realizados. Te recomendamos desactivar su disponibilidad en su lugar.")
+        messages.error(request, f"No puedes eliminar '{product_name}' porque ya aparece en pedidos realizados. Te recomendamos desactivar su disponibilidad en su lugar.")
     return redirect('dashboard:manager_dashboard')
 
 
@@ -138,5 +139,25 @@ def toggle_product_availability(request, product_id):
     product.save()
     
     estado = "activado" if product.is_available else "desactivado"
+    messages.success(request, f"Producto '{product.name}' ha sido {estado}.")
+    return redirect('dashboard:manager_dashboard')
+
+@user_passes_test(is_manager)
+def toggle_product_sale(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.on_sale = not product.on_sale
+    product.save()
+    
+    estado = "activado" if product.on_sale else "desactivado"
+    messages.success(request, f"Producto '{product.name}' ha sido {estado}.")
+    return redirect('dashboard:manager_dashboard')
+
+@user_passes_test(is_manager)
+def toggle_product_prominent(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.prominent = not product.prominent
+    product.save()
+    
+    estado = "activado" if product.prominent else "desactivado"
     messages.success(request, f"Producto '{product.name}' ha sido {estado}.")
     return redirect('dashboard:manager_dashboard')

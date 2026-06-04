@@ -9,6 +9,8 @@ urlpatterns = [
     path('editar/<int:product_id>/', views.modify_product, name='modify_product'),
     path('eliminar/<int:product_id>/', views.delete_product, name='delete_product'),
     path('alternar-disponibilidad/<int:product_id>/', views.toggle_product_availability, name='toggle_availability'),
+    path('alternar-rebaja/<int:product_id>/', views.toggle_product_sale, name='toggle_sale'),
+    path('alternar-destacado/<int:product_id>/', views.toggle_product_prominent, name='toggle_prominent'),
     
     # CRUD Categorías
     path('categoria/crear/', views.create_category, name='create_category'),

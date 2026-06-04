@@ -10,9 +10,21 @@
             <table class="width-full text-left align-middle">
                 <thead class="border-bottom">
                     <tr>
-                        <th class="pad-300 text-left">Nombre</th>
-                        <th class="pad-300 text-left">Descripción</th>
-                        <th class="pad-300 text-left">Productos</th>
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(0)" style="cursor:pointer">
+                            Nombre 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+                        
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(1)" style="cursor:pointer">
+                            Descripción 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+                        
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(2)" style="cursor:pointer">
+                            Productos <i class="fa-solid fa-sort fa-xs text-muted">
+
+                            </i>
+                        </th>
                         <th class="pad-300 text-left">Acciones</th>
                     </tr>
                 </thead>

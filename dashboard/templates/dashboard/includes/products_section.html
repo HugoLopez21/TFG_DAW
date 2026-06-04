@@ -26,11 +26,29 @@
             <table class="width-full text-left">
                 <thead class="border-bottom">
                     <tr>
-                        <th class="pad-300 text-left">Producto</th>
-                        <th class="pad-300 text-left">Categoría</th>
-                        <th class="pad-300 text-left">Precio</th>
-                        <th class="pad-300 text-left">En Oferta</th>
-                        <th class="pad-300 text-left">Estado</th>
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(0)" style="cursor:pointer">
+                            Producto 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+                        
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(1)" style="cursor:pointer">
+                            Categoría 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(2)" style="cursor:pointer">
+                            Precio 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(3)" style="cursor:pointer">
+                            En Oferta 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i>
+                        </th>
+
+                        <th class="pad-300 text-left" onclick="sortAvailabilityTable(4)" style="cursor:pointer">
+                            Estado 
+                            <i class="fa-solid fa-sort fa-xs text-muted"></i></th>
                         <th class="pad-300 text-left">Acciones</th>
                     </tr>
                 </thead>
