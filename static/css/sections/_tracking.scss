@@ -1,0 +1,194 @@
+@import '../modules/colors';
+
+// Keyframes 
+
+// Pulso suave en el paso actual activo con anim de shadow
+@keyframes tl-pulse {
+    0%   { box-shadow: 0 0 0 0   rgba($color-dark, 0.45); }
+    60%  { box-shadow: 0 0 0 7px rgba($color-dark, 0);    }
+    100% { box-shadow: 0 0 0 0   rgba($color-dark, 0);    }
+}
+
+// Relleno del conector de izquierda a derecha, en bucle
+// con pausa al final antes de reiniciarse
+@keyframes tl-fill {
+    0%   { transform: scaleX(0); opacity: 1; }
+    60%  { transform: scaleX(1); opacity: 1; }
+    85%  { transform: scaleX(1); opacity: 0; }
+    100% { transform: scaleX(0); opacity: 0; }
+}
+
+// Raíz 
+.tracking-root {
+    max-width: 860px;
+}
+
+// Cabecera 
+.tracking-header p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+// TimeLine
+.timeline-row {
+    flex-wrap: nowrap;
+}
+
+.timeline-steps {
+    flex: 1;
+    min-width: 0;
+}
+
+// Pasos del timeline
+//padding y el estado activo/inactivo
+.tl-step {
+    padding: 0.4rem 0.85rem;
+    background: #c8c8c8;
+    color: $color-white;
+    white-space: nowrap;
+    border-radius: 3px;
+    cursor: default;
+    flex-shrink: 0;
+    transition: background 0.4s ease;
+
+    &.active {
+        background: $color-dark;
+        color: $color-white;
+    }
+
+    &.current {
+        font-weight: 700;
+        // Pulso en bucle — 2.4s sincronizado con tl-fill
+        animation: tl-pulse 2.4s ease-out infinite;
+    }
+}
+
+// Linea de conexion
+.tl-connector {
+    flex: 1;
+    height: 3px;
+    min-width: 0.5rem;
+    align-self: center;
+    overflow: hidden;
+    position: relative;     
+    background: #c8c8c8;   
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: $color-dark;
+        transform: scaleX(0);
+        transform-origin: left center;
+        opacity: 0;
+    }
+
+    // Enimacion en bucle para el que este activo
+    &.active::after {
+        animation: tl-fill 2.4s ease-in-out infinite;
+    }
+}
+
+// Incidencia
+//
+.incidence-badge {
+    max-width: 130px;
+    flex-shrink: 0;
+    line-height: 1.3;
+    text-align: center;
+    margin-left: 0.75rem;
+}
+
+// Pedido cancelado 
+.tracking-cancelled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    i{ 
+        font-size: 3rem; 
+    }   
+
+    h3{ 
+        line-height: 1.3;
+    }
+
+    p{ 
+        margin: 0; 
+    }
+}
+
+// Horas
+.tracking-times {
+    margin: 0.25rem 0;
+}
+
+.tracking-time-row {
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+}
+
+.time-divider {
+    border: none;
+    border-top: 1px solid $brand-border; 
+    margin: 0.5rem 0;
+}
+
+//Order Summary 
+
+.order-summary-title {
+    display: block;
+}
+
+
+// Grid de cada fila de producto
+.order-item-row {
+    display: grid;
+    grid-template-columns: 42px 1fr auto auto;
+    column-gap: 0.75rem;
+    align-items: center;
+
+    .order-item-notes {
+        grid-column: 2 / -1;
+        font-style: italic;
+        margin-top: 0.1rem;
+
+        i { margin-right: 0.2rem; }
+    }
+}
+
+// Miniatura
+.order-item-thumb {
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+    background: $brand-border;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .thumb-placeholder {
+        color: darken($brand-border, 20%);
+        font-size: 1.1rem;
+    }
+}
+
+.order-item-price {
+    text-align: right;
+}
+
+// Total
+.order-summary-total {
+    margin-top: 0.5rem;
+}
+
+
+// Estados de carga / error
+.tracking-loading,
+.tracking-error {
+    color: darken($color-light, 30%);
+}
+
