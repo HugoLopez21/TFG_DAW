@@ -65,7 +65,10 @@ def checkout_form(request):
 def order_tracking(request, order_id):
     # Verificamos que el pedido exista y pertenezca al usuario
     get_object_or_404(Order, id=order_id, user=request.user)
-    return render(request, 'orders/tracking.html', {'order_id': order_id})
+    context = {
+            'orderId': order_id
+        }
+    return render(request, 'users/includes/tracking.html', context)
 
 def total_price(cart):
     try:
