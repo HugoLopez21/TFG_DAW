@@ -2002,6 +2002,69 @@ header .nav-links a:hover::after {
   color: rgb(205.16, 176.68, 126.84);
 }
 
+.orders-board {
+  display: flex;
+  overflow-x: auto;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+}
+.orders-board::-webkit-scrollbar {
+  height: 8px;
+}
+.orders-board::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.order-column {
+  flex: 1;
+  min-width: 280px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.order-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border-color: #5b7c5d;
+}
+
+.order-modal-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.order-modal-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.order-modal-panel {
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  background: #ffffff;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+.order-modal-panel.open {
+  transform: translateX(0);
+}
+
 @media (max-width: 1400px) {
   .container {
     max-width: 80%;

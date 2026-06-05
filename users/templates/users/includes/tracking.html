@@ -8,7 +8,13 @@
         <div id="django-tracking-island" order-id="{{ orderId}}"></div>
         <script type="module" src="{% static 'react/tracker.js' %}"></script>
     {% else %}
+    <div class="pad-600 box-flex direction-column items-stretch width-quarter">
         <p>No se ha encontrado ningun pedido activo.</p>
+        <a href="{% url 'users:orders_history' %}" class="btn btn-secondary">
+            Ver mis pedidos realizados
+        </a>
+    </div>
+        
     {% endif %}
 </section>
 {% endblock panel_content %}

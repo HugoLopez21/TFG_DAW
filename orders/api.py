@@ -36,18 +36,17 @@ def order_detail(request, pk):
         order = Order.objects.get(pk=pk)
     except Order.DoesNotExist:
         return Response({'detail': 'Not found'}, status=404)
-    
-    # No permite ver pedidos de otros clientes
-    if not request.user.is_staff and order.user != request.user:
-        return Response({'detail': 'No tienes permiso para ver este pedido.'}, status=403)
 
     if request.method == 'GET':
+        # No permite ver pedidos de otros clientes
+        if not request.user.role == 'manager' and order.user != request.user:
+            return Response({'detail': 'No tienes permiso para ver este pedido.'}, status=403)
         serializer = OrderSerializer(order)
         return Response(serializer.data)
         
     elif request.method == 'PUT':
         # No puedes cambiar estado si eres cliente
-        if not request.user.is_staff:
+        if request.user.role == 'customer':
             return Response({'detail': 'Acción denegada.'}, status=403)
             
         serializer = OrderSerializer(order, data=request.data, partial=True)

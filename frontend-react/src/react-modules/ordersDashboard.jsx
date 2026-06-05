@@ -5,6 +5,7 @@ import OrdersList from '../components/orders-dashboard/OrdersList';
 const container = document.getElementById('django-tracking-island');
 if (container) {
     const root = ReactDOM.createRoot(container);
-    const orderId = container.getAttribute('data-order-id');
-    root.render(<OrdersList/>);
+    const csrftoken = container.getAttribute('data-csrf')
+    const userRole = container.getAttribute('data-user-role'); 
+    root.render(<OrdersList userRole={userRole} csrftoken={csrftoken} />);
 }

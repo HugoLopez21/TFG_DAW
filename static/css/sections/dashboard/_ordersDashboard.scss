@@ -1,0 +1,70 @@
+// sections/dashboard/_orders-board.scss
+
+.orders-board {
+    display: flex;
+    overflow-x: auto;
+    align-items: flex-start; // Para que las columnas no se estiren hacia abajo si están vacías
+    padding-bottom: 1rem;
+    
+    // Ocultar la barra de scroll (opcional pero más elegante)
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 4px;
+    }
+}
+
+.order-column {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f8f9fa; // Un tono gris muy claro (puedes cambiarlo por get-color('light') si lo tienes)
+    border-radius: 8px;
+}
+
+.order-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+        border-color: $color-primary; // Usando la variable de tu _config.scss
+    }
+}
+
+// Estilos del panel lateral (reutilizamos la lógica del checkout, pero aislado para pedidos)
+.order-modal-overlay {
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.order-modal-panel {
+    width: 100%;
+    max-width: 450px;
+    height: 100vh;
+    background: #ffffff;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+
+    &.open {
+        transform: translateX(0);
+    }
+}

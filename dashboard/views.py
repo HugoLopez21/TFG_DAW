@@ -13,15 +13,12 @@ def is_manager(user):
     return user.role == "manager"
     
 def is_employee(user):
-    return user.role in ['delivery_man', 'employee']
-
-def is_worker(user):
     return user.role in ['delivery_man', 'employee', 'manager']
 
 
 # ------------ RENDERS DE DASHBOARDS -------------------
 
-# RENDERIZA TEMPLATE DE LOS EMPLEADOS
+# RENDERIZA TEMPLATE DE LOS PEDIDOS
 @user_passes_test(is_employee)
 def orders_dashboard(request):
     return render(request, 'dashboard/orders.html') 
