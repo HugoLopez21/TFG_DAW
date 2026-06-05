@@ -1,5 +1,5 @@
 from django.urls import path
-from .api import products_list, categories_list
+from .api import products_list, categories_list, product_detail
 from . import views
 
 app_name = 'products'
@@ -24,5 +24,6 @@ urlpatterns = [
 
     # API ENDPOINT
     path('', products_list, name='products_list'),
+    path('<int:pk>/', product_detail, name='product_detail'),
     path('categories/', categories_list, name='categories_list')
 ]
