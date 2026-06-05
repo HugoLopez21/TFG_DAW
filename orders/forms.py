@@ -39,6 +39,19 @@ class OrderCheckoutForm(forms.Form):
         })
     )
 
+    payment_method = forms.ChoiceField(
+        choices=[('online', 'Pagar ahora'), ('in_person', 'Pagar en persona')],
+        label="Método de pago",
+        initial='online',
+        widget=forms.RadioSelect()
+    )
+
+    programmed_delivery_date = forms.DateTimeField(
+        required=False,
+        label="Programar entrega",
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'})
+    )
+
     #Validador carrito
     def clean_cart_data(self):
         data = self.cleaned_data.get('cart_data')

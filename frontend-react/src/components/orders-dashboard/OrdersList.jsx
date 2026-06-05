@@ -13,7 +13,7 @@ export default function OrdersList({ userRole, csrftoken }) {
             if (!response.ok) throw new Error('Error en API');
             const data = await response.json();
             console.log(data)
-            setOrders(Array.isArray(data)); 
+            setOrders(Array.isArray(data) ? data : []); 
         }catch (error){
             console.error(error);
             setError(true);

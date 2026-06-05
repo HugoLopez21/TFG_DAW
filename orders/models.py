@@ -33,6 +33,13 @@ class Order(models.Model):
     
     programmed_delivery_date = models.DateTimeField(null=True, blank=True)
     pay_status = models.BooleanField(default =False)
+    
+    PAYMENT_METHODS = [
+        ('online', 'Online'),
+        ('in_person', 'En persona')
+    ]
+    payment_method = models.CharField(max_length=20, choices=PAYMENT_METHODS, default='online')
+    incidences = models.TextField(blank=True, null=True)
 
     
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -48,7 +55,7 @@ class Order(models.Model):
         ('cancelado', 'Cancelado'),
     ]
     status = models.CharField(max_length=30, choices = STATUS_CHOICES, default='pendiente')
-    status_change_data = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    status_change_data = models.DateTimeField(auto_now=True, null=True, blank=True)
 
 class OrderDetail(models.Model):
     order = models.ForeignKey(

@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Order, OrderDetail
 from products.models import Product
 from django.db import transaction
+from django.utils import timezone
+from datetime import timedelta
 import json
 
 @login_required
@@ -21,16 +23,26 @@ def checkout_form(request):
                 form_delivery_type = form.cleaned_data['delivery_type']
                 form_address = form.cleaned_data['address']
                 form_notes = form.cleaned_data['notes']
+                form_payment_method = form.cleaned_data['payment_method']
+                form_programmed_date = form.cleaned_data['programmed_delivery_date']
                 form_checkout_cart = json.loads(form.cleaned_data['cart_data'])
                 
+                # Tarea 48: Cálculo de tiempo estimado (20 min por pedido activo + el actual)
+                pending_orders_count = Order.objects.filter(status__in=['pendiente', 'en_preparacion']).count()
+                estimated_minutes = 20 * (pending_orders_count + 1)
+                estimated_delivery = timezone.now() + timedelta(minutes=estimated_minutes)
+
                 # Si algo falla se borran los pedidos
                 with transaction.atomic():
                     current_order = Order.objects.create(
                         delivery_type = form_delivery_type,
                         total = total_price(form_checkout_cart),
-                        pay_status = True,
+                        pay_status = True if form_payment_method == 'online' else False,
                         user = user,
-                        address = form_address if form_delivery_type == 'home' else None
+                        address = form_address if form_delivery_type == 'home' else None,
+                        payment_method = form_payment_method,
+                        programmed_delivery_date = form_programmed_date,
+                        estimated_order_delivery = estimated_delivery
                     )
                     
                     #Por cada producto del carrito se crea una linea de detalle

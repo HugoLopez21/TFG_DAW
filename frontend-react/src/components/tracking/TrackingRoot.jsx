@@ -62,14 +62,14 @@ export default function TrackingRoot({orderId}){
                 <div className="tracking-time-row box-flex gap-300">
                     <span className="text-300 color-dark">Hora estimada:</span>
                     <span className="text-300 weight-bold color-dark">
-                        {formatTime(orderData.estimated_time)}
+                        {formatTime(orderData.estimated_order_delivery)}
                     </span>
                 </div>
                 <hr className="time-divider" />
                 <div className="tracking-time-row box-flex gap-300">
                     <span className="text-300 color-dark">Hora programada:</span>
                     <span className="text-300 weight-bold color-dark">
-                        {formatTime(orderData.scheduled_time)}
+                        {orderData.programmed_delivery_date ? formatTime(orderData.programmed_delivery_date) : 'Lo antes posible'}
                     </span>
                 </div>
             </div>
