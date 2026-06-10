@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_tfg_test',
+        'NAME': 'db_tfg_test_v1',
         'USER' : 'admin',
         'PASSWORD' : '1234',
         'HOST' : 'LOCALHOST',

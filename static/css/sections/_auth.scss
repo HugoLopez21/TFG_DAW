@@ -1,0 +1,86 @@
+// Auth pages — solo lo que las utilidades Gorko no pueden hacer
+
+.auth-page {
+    min-height: 100vh; // box-flex y direction-column van inline en el template
+}
+
+.auth-header {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    a { gap: 0.5rem; }
+    img { width: 50px; }
+}
+
+.auth-main {
+    flex: 1; // box-flex, items-center y justify-center van inline
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.15);
+
+    input[type='email'],
+    input[type='text'],
+    input[type='password'],
+    input[type='date'] {
+        width: 100%;
+        padding: 0.7rem 1rem;
+        border: 1px solid $brand-border;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        background: $color-light;
+        color: $color-dark;
+        margin-bottom: 0.25rem;
+        transition: border-color 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            background: $color-white;
+            box-shadow: 0 0 0 3px rgba($color-primary, 0.12);
+        }
+    }
+
+    label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 0.35rem;
+    }
+
+    a {
+        color: $color-primary;
+        font-weight: 600;
+
+        &:hover { text-decoration: underline; }
+    }
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.25rem 0;
+    color: #888;
+    font-size: 0.85rem;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: $brand-border;
+    }
+}
+
+.errorlist {
+    color: #c62828;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    list-style: none;
+    padding: 0;
+}

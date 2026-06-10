@@ -31,6 +31,8 @@ export const ProductCard = ({ product, variant = "standard" }) => {
                     </h4>
                 </div>
 
+                
+
                 <div className="product-footer box-flex justify-between items-center gap-top-200">
                     <span className="product-price text-300 weight-bold color-dark">
                         {parseFloat(product.price).toFixed(2)}€

@@ -1,0 +1,21 @@
+// Sección de contacto — grid formulario + mapa
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 2rem;
+}
+
+// Texto de dirección / horario
+.address-text {
+    color: $color-dark-text;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+// Iframe de Google Maps
+.map-embed {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: block;
+}

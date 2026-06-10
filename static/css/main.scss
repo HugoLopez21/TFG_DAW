@@ -15,14 +15,14 @@
 @import 'modules/colors';
 @import 'modules/buttons';
 
-@import 'sections/prominent';
-@import 'sections/header';
-@import 'sections/review';
-@import 'sections/products';
-@import 'sections/hero';
-@import 'sections/about';
-@import 'sections/footer';
-@import 'sections/profile/_profile';
+@import 'sections/landing/prominent';
+@import 'sections/landing/header';
+@import 'sections/landing/review';
+@import 'sections/landing/products';
+@import 'sections/landing/hero';
+@import 'sections/landing/about';
+@import 'sections/landing/footer';
+@import 'sections/landing/profile/_profile';
 
 @import 'sections/profile/products_catalog/_catalogRoot';
 @import 'sections/profile/products_catalog/_productGrid';
@@ -30,6 +30,7 @@
 @import 'sections/dashboard/_dashboard';
 @import 'sections/_tracking';
 @import 'sections/dashboard/_ordersDashboard';
+@import 'sections/_auth';
 
 // ----- Ajustar para responsive -------
 @media (max-width: 1400px) {

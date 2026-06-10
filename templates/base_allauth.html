@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómete el Mundo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Montserrat:wght@900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div class="auth-page box-flex direction-column">
+
+        <header class="auth-header bg-beige-dark pad-400 box-flex items-center">
+            <a href="{% url 'main:home' %}" class="box-flex items-center gap-300">
+                <img src="{% static 'media/logo.png' %}" alt="Cómete el Mundo">
+            </a>
+        </header>
+
+        <main class="auth-main box-flex items-center justify-center">
+            <div class="auth-card bg-white">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>
